@@ -9,7 +9,7 @@ Two tags will be available through Docker Hub:
 - sodadata/soda-debug:slim
 - sodadata/soda-debug:full
 
-latest should point to the slim one.
+latest should point to the slim one. Do note that even the slim image is considerable in size (˜`2G).
 
 Builds are created for amd64 only.
 
@@ -26,7 +26,7 @@ Or for additional AWS, Azure and Google Cloud CLI tools:
 
 ```
 docker buildx build --platform=linux/amd64 --build-arg BUILD_TYPE=FULL --no-cache \
- -f ./Dockerfile-v3.10 -t sodadata/soda-debug:full .
+ -f ./Dockerfile -t sodadata/soda-debug:full .
 ```
 
 ## Usage

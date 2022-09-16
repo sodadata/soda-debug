@@ -4,10 +4,12 @@ Please note: this is (and will most likely remain) a work in progress.
 
 This is a Docker image based on Ubuntu 22.04 (Jammy) and intended for troubleshooting pods and container deployments at Soda.
 
-Two tags are available: one for Python 3.9 and one for Python 3.10:
+Two tags will be available through Docker Hub:
 
-- sodadata/soda-debug:v3.9
-- sodadata/soda-debug:v3.10
+- sodadata/soda-debug:slim
+- sodadata/soda-debug:full
+
+latest should point to the slim one.
 
 Builds are created for amd64 only.
 
@@ -17,7 +19,7 @@ Manual build:
 
 ```
 docker buildx build --platform=linux/amd64 --no-cache \
- -f ./Dockerfile -t sodadata/soda-debug .
+ -f ./Dockerfile -t sodadata/soda-debug:slim .
 ```
 
 Or for additional AWS, Azure and Google Cloud CLI tools: 

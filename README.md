@@ -9,7 +9,7 @@ Two tags will be available through Docker Hub:
 - sodadata/soda-debug:slim
 - sodadata/soda-debug:full
 
-latest should point to the slim one. Do note that even the slim image is considerable in size (˜`2G).
+latest should point to the slim one. Do note that even the slim image is considerable in size (~2G).
 
 Builds are created for amd64 only.
 

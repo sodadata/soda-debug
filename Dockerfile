@@ -18,8 +18,9 @@ RUN apt-get update && \
         software-properties-common \
         git jq wget \
         bash \
-        dnsutils mtr-tiny traceroute iputils-ping tcpdump iproute2 \
-        neovim tmux unzip nano
+        dnsutils mtr-tiny traceroute iputils-ping tcpdump iproute2 netcat \
+        neovim nano \
+        tmux unzip 
 
 # install dependencies for Soda Core on Python 3.9
 RUN curl https://packages.microsoft.com/keys/microsoft.asc | apt-key add -

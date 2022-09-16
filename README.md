@@ -41,6 +41,11 @@ Start the pod:
 > kubectl run soda-debug -it --image=sodadata/soda-debug -n soda-agent -- bash
 ```
 
+Please note, when running on EKS Fargate:
+- add this flag to the above command: `-l eks.amazonaws.com/fargate-profile=soda-agent-profile`
+- it could take a few minutes before the pod get scheduled and created, so if you see an error like "error: timed out waiting for the condition", it could just mean it takes a few more minutes for the pod to become available.
+- since the first command timed out, once the pod is running you will have to run `kubectl exec -it pod/soda-debug -n soda-agent -- bash` to get a shell
+ 
 Now you can run commands like:
 
 *Ping an address and see if it resolves*
@@ -123,19 +128,24 @@ soda-core-trino                        3.0.7
 
 Instead of launching a pod and running commands in a shell or against the running pod, you can also issue one off commands (the `--rm` flag lets Kubernetes remove up the pod once it finishes).
 
+Please note, when running on EKS Fargate add this flag to the above command: `-l eks.amazonaws.com/fargate-profile=soda-agent-profile`
+
 
 Examples:
 
 ```
-> kubectl run soda-debug -it --rm --image=sodadata/soda-debug -n soda-agent -- pip list | grep -i soda
+> kubectl run soda-debug -it --rm --image=sodadata/soda-debug \
+    -n soda-agent -- pip list | grep -i soda
 ```
 
 ```
-> kubectl run soda-debug -it --rm --image=sodadata/soda-debug -n soda-agent -- curl https://cloud.soda.io
+> kubectl run soda-debug -it --rm --image=sodadata/soda-debug 
+    -n soda-agent -- curl https://cloud.soda.io
 ```
 
 ```
-> kubectl run soda-debug -it --rm --image=sodadata/soda-debug -n soda-agent -- ping some-service
+> kubectl run soda-debug -it --rm --image=sodadata/soda-debug \
+    -n soda-agent -- ping some-service
 ```
 (you need to hit CTRL-C for that last one to show up a result)
 
